@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="style.css" />
+	<title>Slink - Link Manager</title>
+</head>
+<body>
+	<section id="app-container">
+		<header>
+			<h1>Slink</h1>
+			<button id="dark-mode-toggle">🌙 Toggle Dark Mode</button>
+		</header>
+
+		<section id="form-section">
+			<p>Manage your links with ease!</p>
+			<form id="input-form">
+				<input type="text" id="input-el" placeholder="Enter your link here..." required />
+				<input type="text" id="info-el" placeholder="Optional: Info about the link..." />
+				<select id="category-select">
+					<option value="General">General</option>
+				</select>
+				<div id="add-category-container">
+					<input type="text" id="new-category" placeholder="Add a new category..." />
+					<button type="button" id="add-category-btn" class="add-btn">Add Category</button>
+				</div>
+				<button class="save-btn" id="save-btn">Save Link</button>
+				<button type="button" id="add-tab-btn" class="add-btn">Add Current Tab</button>
+			</form>
+		</section>
+
+		<div id="category-list">
+			<h2>Categories</h2>
+			<ul id="category-container"></ul>
+		</div>
+	</section>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+	<script src="script.js"></script>
+</body>
+</html>

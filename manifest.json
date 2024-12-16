@@ -1,0 +1,11 @@
+
+{
+	"manifest_version": 3,
+	"version": "1.0",
+	"name": "Slink",
+	"permissions": ["tabs", "storage"],
+	"action":{
+		"default_popup": "index.html",
+		"default_icon": "res/icon.png"
+	}
+}
