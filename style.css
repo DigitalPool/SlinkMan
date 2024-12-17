@@ -71,6 +71,15 @@ header {
 	gap: 0.5rem;
 }
 
+#button-row {
+	display: flex;
+	gap: 0.5rem;
+}
+
+#button-row button {
+	flex: 1;
+}
+
 .add-btn {
 	background-color: #3498db;
 	color: #fff;

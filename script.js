@@ -86,48 +86,47 @@ function populateCategoryDropdown() {
 
 
 function renderCategories() {
-    const container = document.getElementById("category-container");
-    container.innerHTML = "";
+	const container = document.getElementById("category-container");
+	container.innerHTML = "";
 
-    Object.keys(myLinks).forEach((category) => {
-        const categoryItem = document.createElement("li");
-        categoryItem.classList.add("category-item");
+	Object.keys(myLinks).forEach((category) => {
+		const categoryItem = document.createElement("li");
+		categoryItem.classList.add("category-item");
 
-        const title = document.createElement("div");
-        title.textContent = category;
-        title.classList.add("expand-title"); // gives the title a class to style later
-        title.addEventListener("click", () => toggleLinks(categoryItem, category));
+		const title = document.createElement("div");
+		title.textContent = category;
+		title.classList.add("expand-title");
+		title.addEventListener("click", () => toggleLinks(categoryItem, category));
 
-        // Create a container just for the buttons
-        const buttonContainer = document.createElement("div");
-        buttonContainer.classList.add("button-container");
+		const buttonContainer = document.createElement("div");
+		buttonContainer.classList.add("button-container");
 
-        const showBtn = document.createElement("button");
-        showBtn.textContent = "Show";
-        showBtn.classList.add("show-btn");
-        showBtn.addEventListener("click", () => toggleLinks(categoryItem, category));
+		const showBtn = document.createElement("button");
+		showBtn.textContent = "Show";
+		showBtn.classList.add("show-btn");
+		showBtn.addEventListener("click", () => toggleLinks(categoryItem, category));
 
-        const deleteBtn = document.createElement("button");
-        deleteBtn.textContent = "Delete";
-        deleteBtn.classList.add("delete-btn");
-        deleteBtn.addEventListener("click", () => deleteCategory(category));
+		const deleteBtn = document.createElement("button");
+		deleteBtn.textContent = "Delete";
+		deleteBtn.classList.add("delete-btn");
+		deleteBtn.addEventListener("click", () => deleteCategory(category));
 
-        const exportBtn = document.createElement("button");
-        exportBtn.textContent = "Export";
-        exportBtn.classList.add("export-btn");
-        exportBtn.addEventListener("click", () => exportToExcel(category));
+		const exportBtn = document.createElement("button");
+		exportBtn.textContent = "Export";
+		exportBtn.classList.add("export-btn");
+		exportBtn.addEventListener("click", () => exportToExcel(category));
 
-        // Append the buttons to the button container
-        buttonContainer.appendChild(showBtn);
-        buttonContainer.appendChild(deleteBtn);
-        buttonContainer.appendChild(exportBtn);
+		// Append the buttons to the button container
+		buttonContainer.appendChild(showBtn);
+		buttonContainer.appendChild(deleteBtn);
+		buttonContainer.appendChild(exportBtn);
 
-        // Append title and button container to the category item
-        categoryItem.appendChild(title);
-        categoryItem.appendChild(buttonContainer);
+		// Append title and button container to the category item
+		categoryItem.appendChild(title);
+		categoryItem.appendChild(buttonContainer);
 
-        container.appendChild(categoryItem);
-    });
+		container.appendChild(categoryItem);
+	});
 }
 
 

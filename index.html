@@ -15,7 +15,7 @@
 		</header>
 
 		<section id="form-section">
-			<p>Manage your links with ease!</p>
+			<p>Save and manage your favorite links effortlessly!</p>
 			<form id="input-form">
 				<input type="text" id="input-el" placeholder="Enter your link here..." required />
 				<input type="text" id="info-el" placeholder="Optional: Info about the link..." />
@@ -26,8 +26,12 @@
 					<input type="text" id="new-category" placeholder="Add a new category..." />
 					<button type="button" id="add-category-btn" class="add-btn">Add Category</button>
 				</div>
-				<button class="save-btn" id="save-btn">Save Link</button>
-				<button type="button" id="add-tab-btn" class="add-btn">Add Current Tab</button>
+
+				<!-- Buttons wrapped in a separate container -->
+				<div id="button-row">
+					<button class="save-btn" id="save-btn">Save Link</button>
+					<button type="button" id="add-tab-btn" class="add-btn">Add Current Tab</button>
+				</div>
 			</form>
 		</section>
 
