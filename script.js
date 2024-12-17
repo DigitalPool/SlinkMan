@@ -5,14 +5,20 @@ renderCategories();
 populateCategoryDropdown();
 
 function saveLink(event) {
-	event.preventDefault();
+	event.preventDefault(); //to prevent the default action of the form
 	const link = document.getElementById("input-el").value.trim();
 	const info = document.getElementById("info-el").value.trim();
 	const category = document.getElementById("category-select").value;
 
 	if (!link) return alert("Please enter a valid link!");
 
-	const fullLink = link.startsWith("http://") || link.startsWith("https://") ? link : "http://" + link;
+	let fullLink;
+
+	if (link.startsWith("http://") || link.startsWith("https://")) {
+		fullLink = link;
+	} else {
+		fullLink = "http://" + link;
+	}
 
 	if (!myLinks[category]) myLinks[category] = [];
 	myLinks[category].push({ link: fullLink, info });
@@ -45,38 +51,85 @@ function populateCategoryDropdown() {
 	});
 }
 
+// function renderCategories() {
+// 	const container = document.getElementById("category-container");
+// 	container.innerHTML = "";
+
+// 	Object.keys(myLinks).forEach((category) => {
+// 		const categoryItem = document.createElement("li");
+// 		categoryItem.classList.add("category-item");
+
+// 		const title = document.createElement("div");
+// 		title.textContent = category;
+// 		title.style.fontWeight = "bold";
+// 		title.style.cursor = "pointer";
+// 		title.classList.add("expand-title");
+
+// 		title.addEventListener("click", () => toggleLinks(categoryItem, category));
+
+// 		const deleteBtn = document.createElement("button");
+// 		deleteBtn.textContent = "Delete Category";
+// 		deleteBtn.classList.add("delete-btn");
+// 		deleteBtn.addEventListener("click", () => deleteCategory(category));
+
+// 		const exportBtn = document.createElement("button");
+// 		exportBtn.textContent = "Export";
+// 		exportBtn.classList.add("export-btn");
+// 		exportBtn.addEventListener("click", () => exportToExcel(category));
+
+// 		categoryItem.appendChild(title);
+// 		categoryItem.appendChild(deleteBtn);
+// 		categoryItem.appendChild(exportBtn);
+// 		container.appendChild(categoryItem);
+// 	});
+// }
+
+
 function renderCategories() {
-	const container = document.getElementById("category-container");
-	container.innerHTML = "";
+    const container = document.getElementById("category-container");
+    container.innerHTML = "";
 
-	Object.keys(myLinks).forEach((category) => {
-		const categoryItem = document.createElement("li");
-		categoryItem.classList.add("category-item");
+    Object.keys(myLinks).forEach((category) => {
+        const categoryItem = document.createElement("li");
+        categoryItem.classList.add("category-item");
 
-		const title = document.createElement("div");
-		title.textContent = category;
-		title.style.fontWeight = "bold";
-		title.style.cursor = "pointer";
-		title.classList.add("expand-title");
+        const title = document.createElement("div");
+        title.textContent = category;
+        title.classList.add("expand-title"); // gives the title a class to style later
+        title.addEventListener("click", () => toggleLinks(categoryItem, category));
 
-		title.addEventListener("click", () => toggleLinks(categoryItem, category));
+        // Create a container just for the buttons
+        const buttonContainer = document.createElement("div");
+        buttonContainer.classList.add("button-container");
 
-		const deleteBtn = document.createElement("button");
-		deleteBtn.textContent = "Delete Category";
-		deleteBtn.classList.add("delete-btn");
-		deleteBtn.addEventListener("click", () => deleteCategory(category));
+        const showBtn = document.createElement("button");
+        showBtn.textContent = "Show";
+        showBtn.classList.add("show-btn");
+        showBtn.addEventListener("click", () => toggleLinks(categoryItem, category));
 
-		const exportBtn = document.createElement("button");
-		exportBtn.textContent = "Export";
-		exportBtn.classList.add("export-btn");
-		exportBtn.addEventListener("click", () => exportToExcel(category));
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "Delete";
+        deleteBtn.classList.add("delete-btn");
+        deleteBtn.addEventListener("click", () => deleteCategory(category));
 
-		categoryItem.appendChild(title);
-		categoryItem.appendChild(deleteBtn);
-		categoryItem.appendChild(exportBtn);
-		container.appendChild(categoryItem);
-	});
+        const exportBtn = document.createElement("button");
+        exportBtn.textContent = "Export";
+        exportBtn.classList.add("export-btn");
+        exportBtn.addEventListener("click", () => exportToExcel(category));
+
+        // Append the buttons to the button container
+        buttonContainer.appendChild(showBtn);
+        buttonContainer.appendChild(deleteBtn);
+        buttonContainer.appendChild(exportBtn);
+
+        // Append title and button container to the category item
+        categoryItem.appendChild(title);
+        categoryItem.appendChild(buttonContainer);
+
+        container.appendChild(categoryItem);
+    });
 }
+
 
 function toggleLinks(parent, category) {
 	let linkContainer = parent.nextElementSibling;
@@ -100,13 +153,15 @@ function toggleLinks(parent, category) {
 			anchor.href = link;
 			anchor.textContent = link;
 			anchor.target = "_blank";
+			anchor.style.fontSize = "0.7rem";
 			anchor.style.display = "block";
 
 			const infoText = document.createElement("div");
-			infoText.textContent = info || "No info provided";
-			infoText.style.fontSize = "0.8rem";
+			infoText.textContent = info || "";
+			infoText.style.fontSize = "0.6rem";
 			infoText.style.color = "#666";
 			infoText.style.marginTop = "0.2rem";
+			infoText.style.marginBottom = "0.2rem";
 
 			linkItem.appendChild(anchor);
 			linkItem.appendChild(infoText);
@@ -153,43 +208,6 @@ document.getElementById("dark-mode-toggle").addEventListener("click", () => {
 if (darkMode) document.body.classList.add("dark-mode");
 
 document.getElementById("save-btn").addEventListener("click", saveLink);
-
-function renderCategories() {
-	const container = document.getElementById("category-container");
-	container.innerHTML = "";
-
-	Object.keys(myLinks).forEach((category) => {
-		const categoryItem = document.createElement("li");
-		categoryItem.classList.add("category-item");
-
-		const title = document.createElement("div");
-		title.textContent = category;
-		title.style.fontWeight = "bold";
-		title.style.cursor = "pointer";
-		title.classList.add("expand-title");
-
-		const showBtn = document.createElement("button");
-		showBtn.textContent = "Show";
-		showBtn.classList.add("show-btn");
-		showBtn.addEventListener("click", () => toggleLinks(categoryItem, category));
-
-		const deleteBtn = document.createElement("button");
-		deleteBtn.textContent = "Delete Category";
-		deleteBtn.classList.add("delete-btn");
-		deleteBtn.addEventListener("click", () => deleteCategory(category));
-
-		const exportBtn = document.createElement("button");
-		exportBtn.textContent = "Export";
-		exportBtn.classList.add("export-btn");
-		exportBtn.addEventListener("click", () => exportToExcel(category));
-
-		categoryItem.appendChild(title);
-		categoryItem.appendChild(showBtn);
-		categoryItem.appendChild(deleteBtn);
-		categoryItem.appendChild(exportBtn);
-		container.appendChild(categoryItem);
-	});
-}
 
 document.getElementById("add-tab-btn").addEventListener("click", () => {
 	if (chrome?.tabs) {
