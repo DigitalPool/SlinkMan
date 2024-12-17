@@ -108,14 +108,14 @@ header {
 }
 
 .category-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    margin-bottom: 0.5rem;
-    padding: 0.5rem;
-    border-radius: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #f9f9f9;
+	border: 1px solid #ddd;
+	margin-bottom: 0.5rem;
+	padding: 0.5rem;
+	border-radius: 5px;
 }
 
 .category-item button {
@@ -133,18 +133,18 @@ header {
 }
 
 .expand-title {
-    flex: 1;
-    font-weight: bold;
-    cursor: pointer;
+	flex: 1;
+	font-weight: bold;
+	cursor: pointer;
 }
 
 .button-container {
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 .button-container button {
-    margin-left: 0.5rem;
+	margin-left: 0.5rem;
 }
 
 .show-btn:hover {
