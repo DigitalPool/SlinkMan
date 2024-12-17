@@ -51,40 +51,6 @@ function populateCategoryDropdown() {
 	});
 }
 
-// function renderCategories() {
-// 	const container = document.getElementById("category-container");
-// 	container.innerHTML = "";
-
-// 	Object.keys(myLinks).forEach((category) => {
-// 		const categoryItem = document.createElement("li");
-// 		categoryItem.classList.add("category-item");
-
-// 		const title = document.createElement("div");
-// 		title.textContent = category;
-// 		title.style.fontWeight = "bold";
-// 		title.style.cursor = "pointer";
-// 		title.classList.add("expand-title");
-
-// 		title.addEventListener("click", () => toggleLinks(categoryItem, category));
-
-// 		const deleteBtn = document.createElement("button");
-// 		deleteBtn.textContent = "Delete Category";
-// 		deleteBtn.classList.add("delete-btn");
-// 		deleteBtn.addEventListener("click", () => deleteCategory(category));
-
-// 		const exportBtn = document.createElement("button");
-// 		exportBtn.textContent = "Export";
-// 		exportBtn.classList.add("export-btn");
-// 		exportBtn.addEventListener("click", () => exportToExcel(category));
-
-// 		categoryItem.appendChild(title);
-// 		categoryItem.appendChild(deleteBtn);
-// 		categoryItem.appendChild(exportBtn);
-// 		container.appendChild(categoryItem);
-// 	});
-// }
-
-
 function renderCategories() {
 	const container = document.getElementById("category-container");
 	container.innerHTML = "";
