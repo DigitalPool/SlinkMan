@@ -110,27 +110,65 @@ function toggleLinks(parent, category) {
 	if (myLinks[category].length === 0) {
 		linkContainer.textContent = "No links available.";
 	} else {
-		myLinks[category].forEach(({ link, info }) => {
+		myLinks[category].forEach(({ link, info }, index) => {
 			const linkItem = document.createElement("div");
 			linkItem.classList.add("link-item");
 
+			// Link displayed above
 			const anchor = document.createElement("a");
 			anchor.href = link;
 			anchor.textContent = link;
 			anchor.target = "_blank";
 			anchor.style.fontSize = "0.7rem";
 			anchor.style.display = "block";
+			linkItem.appendChild(anchor);
+
+			// Container for info text and buttons in a row
+			const infoContainer = document.createElement("div");
+			infoContainer.classList.add("link-info-container");
 
 			const infoText = document.createElement("div");
 			infoText.textContent = info || "";
-			infoText.style.fontSize = "0.6rem";
-			infoText.style.color = "#666";
-			infoText.style.marginTop = "0.2rem";
-			infoText.style.marginBottom = "0.2rem";
+			infoText.classList.add("link-info-text");
 
-			linkItem.appendChild(anchor);
-			linkItem.appendChild(infoText);
+			// Button container to keep Edit and Delete together on the right
+			const buttonGroup = document.createElement("div");
+			buttonGroup.classList.add("link-info-button-group");
 
+			// Edit button
+			const editBtn = document.createElement("button");
+			editBtn.textContent = "Edit Info";
+			editBtn.classList.add("edit-btn");
+			editBtn.addEventListener("click", () => {
+				const newInfo = prompt("Enter new info:", info || "");
+				if (newInfo !== null) {
+					myLinks[category][index].info = newInfo.trim() || "";
+					saveToLocalStorage();
+					linkContainer.remove();
+					toggleLinks(parent, category);
+				}
+			});
+
+			// Delete button
+			const deleteLinkBtn = document.createElement("button");
+			deleteLinkBtn.textContent = "Delete Link";
+			deleteLinkBtn.classList.add("delete-link-btn");
+			deleteLinkBtn.addEventListener("click", () => {
+				if (confirm("Are you sure you want to delete this link?")) {
+					myLinks[category].splice(index, 1);
+					saveToLocalStorage();
+					linkContainer.remove();
+					toggleLinks(parent, category);
+				}
+			});
+
+			buttonGroup.appendChild(editBtn);
+			buttonGroup.appendChild(deleteLinkBtn);
+
+			infoContainer.appendChild(infoText);
+			infoContainer.appendChild(buttonGroup);
+
+			linkItem.appendChild(infoContainer);
 			linkContainer.appendChild(linkItem);
 		});
 	}
