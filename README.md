@@ -114,7 +114,7 @@ These permissions ensure the extension functions as intended without collecting 
 ### 🌟 **Screenshots**
 
 1. **Home View**  
-   ![Home](res/demo-light.png)
+   ![Home](res/demo.gif)
 
 2. **Dark Mode**  
    ![Dark Mode](res/demo-dark.png)
