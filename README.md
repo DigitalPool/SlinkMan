@@ -47,7 +47,7 @@ With Slink, managing your online resources has never been this easy!
 
 ---
 
-### 🎥 **Demo**
+### 🎥 **Screenshots**
 
 | **Light Mode**                        | **Dark Mode**                        |
 | ------------------------------------- | ------------------------------------- |
@@ -111,13 +111,10 @@ These permissions ensure the extension functions as intended without collecting 
 
 ---
 
-### 🌟 **Screenshots**
+### 🌟 **Demo**
 
-1. **Home View**  
-   ![Home](res/demo.gif)
-
-2. **Dark Mode**  
-   ![Dark Mode](res/demo-dark.png)
+1. **Demo**  
+   ![Demo](res/demo.gif)
 
 ---
 
