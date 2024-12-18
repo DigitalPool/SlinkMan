@@ -113,7 +113,6 @@ These permissions ensure the extension functions as intended without collecting 
 
 ### 🌟 **Demo**
 
-1. **Demo**  
    ![Demo](res/demo.gif)
 
 ---
