@@ -61,7 +61,7 @@ With Slink, managing your online resources has never been this easy!
    - Download or clone this repository to your local computer.
 
    ```bash
-   git clone https://github.com/yourusername/slink-link-manager.git
+   git clone https://github.com/DigitalPool/SlinkMan.git
    ```
 
 2. **Load the Extension into Chrome**  
