@@ -51,7 +51,7 @@ With Slink, managing your online resources has never been this easy!
 
 | **Light Mode**                        | **Dark Mode**                        |
 | ------------------------------------- | ------------------------------------- |
-| ![Light Mode Demo](res/demo-light.png)     | ![Dark Mode Demo](res/deo-dark.png)      |
+| ![Light Mode Demo](res/demo-light.png)     | ![Dark Mode Demo](res/demo-dark.png)      |
 
 ---
 
